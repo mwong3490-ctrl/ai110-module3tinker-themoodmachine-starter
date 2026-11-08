@@ -38,6 +38,44 @@ NEGATIVE_WORDS = [
     "boring",
 ]
 
+# Situations almost nobody enjoys. A positive word followed closely by one of
+# these ("I love getting stuck in traffic") is treated as sarcasm.
+# Words must match preprocess() output (lowercase, no apostrophes).
+NEGATIVE_SITUATIONS = [
+    "traffic",
+    "stuck",
+    "homework",
+    "monday",
+    "mondays",
+    "waiting",
+    "overtime",
+    "closing",
+    "deadline",
+    "deadlines",
+    "delayed",
+    "cancelled",
+    "canceled",
+    "chores",
+    "detention",
+    "dentist",
+    "assighment",
+]
+
+# Phrases meaning "being forced to do something" ("so happy I have to work").
+# Each phrase is a tuple of consecutive tokens.
+OBLIGATION_PHRASES = [
+    ("have", "to"),
+    ("has", "to"),
+    ("got", "to"),
+    ("gotta",),
+]
+
+# Words that make the positive word right after them sarcastic
+# ("oh great, more work", "oh wonderful", "oh joy").
+SARCASTIC_OPENERS = [
+    "oh",
+]
+
 # ---------------------------------------------------------------------
 # Starter labeled dataset
 # ---------------------------------------------------------------------
@@ -50,6 +88,11 @@ SAMPLE_POSTS = [
     "This is fine",
     "So excited for the weekend",
     "I am not happy about this",
+    "This shift is boring",
+    "The Sun feels nice today",
+    "I'm so happy I have to take orders 10 minutes befor closing",
+    "This show is mid",
+    "This is very annoying",
 ]
 
 # Human labels for each post above.
@@ -65,6 +108,11 @@ TRUE_LABELS = [
     "neutral",   # "This is fine"
     "positive",  # "So excited for the weekend"
     "negative",  # "I am not happy about this"
+    "negative",  # "This shift is boring"
+    "positive",  # "The sun feels nice today"
+    "negative",  # "I'm so happy I have to take orders 10 minutes befor closing"
+    "negative",  # "This show is mid"
+    "negative",  # This is very annoying"
 ]
 
 # TODO: Add 5-10 more posts and labels.
